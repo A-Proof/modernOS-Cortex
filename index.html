@@ -1,156 +1,323 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ModernOS — Comparison</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, Inter, sans-serif;
-      background: #0a0f17;
-      color: #e3edf7;
-      -webkit-font-smoothing: antialiased;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ModernOS – Comparison</title>
 
-    .container {
-      max-width: 950px;
-      margin: 40px auto;
-      padding: 20px;
-    }
+<style>
+/* -------------------------
+   GLOBAL DESIGN
+--------------------------*/
+:root {
+  --bg-dark: #0a0f17;
+  --bg-light: #f4f7ff;
+  --text-dark: #e5f6ff;
+  --text-light: #1b1e23;
+  --glass-dark: rgba(255,255,255,0.05);
+  --glass-light: rgba(0,0,0,0.05);
+  --border-dark: rgba(255,255,255,0.09);
+  --border-light: rgba(0,0,0,0.09);
+}
 
-    header {
-      padding: 30px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
-      text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-    }
+html[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --glass: var(--glass-dark);
+  --border: var(--border-dark);
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-      color: #c7f4ff;
-    }
+html[data-theme="light"] {
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+  --glass: var(--glass-light);
+  --border: var(--border-light);
+}
 
-    p.lead {
-      margin-top: 8px;
-      color: #9eb4c8;
-      font-size: 15px;
-    }
+body {
+  margin: 0;
+  font-family: system-ui, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
 
-    .table-wrap {
-      margin-top: 30px;
-      overflow-x: auto;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-    }
+/* -------------------------
+   HERO GRADIENT ANIMATION
+--------------------------*/
+.hero-bg {
+  position: fixed;
+  top: -150px;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,200,255,0.4), transparent 70%);
+  filter: blur(100px);
+  animation: float 12s infinite linear alternate;
+  pointer-events: none;
+}
+@keyframes float {
+  from { transform: translate(0,0); }
+  to   { transform: translate(200px,120px); }
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 550px;
-    }
+/* -------------------------
+   PAGE STRUCTURE
+--------------------------*/
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+  position: relative;
+}
 
-    th, td {
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      text-align: left;
-      font-size: 14px;
-    }
+/* -------------------------
+   HEADER + LOGO
+--------------------------*/
+header {
+  text-align: center;
+  padding: 35px 25px;
+  border-radius: 18px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
 
-    th {
-      color: #dffaff;
-      background: rgba(255,255,255,0.04);
-    }
+.logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards ease-out;
+}
 
-    .feature {
-      font-weight: 600;
-      color: #eaf8ff;
-    }
+/* Placeholder ModernOS SVG logo */
+.logo svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text);
+}
 
-    .badge {
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-block;
-    }
+@keyframes fadeIn {
+  to { opacity: 1; transform: scale(1); }
+}
 
-    .yes { background: rgba(0,255,180,0.12); color: #00d68f; border: 1px solid rgba(0,255,180,0.2);}
-    .no { background: rgba(255,60,60,0.12); color: #ff6b6b; border: 1px solid rgba(255,60,60,0.2);}
-    .maybe { background: rgba(255,255,255,0.1); color: #9eb4c8; border: 1px solid rgba(255,255,255,0.18);}
-  </style>
+h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+p.lead {
+  margin-top: 8px;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+/* -------------------------
+   THEME TOGGLE
+--------------------------*/
+.theme-toggle {
+  margin-top: 15px;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  gap: 8px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  transition: 0.25s;
+}
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Icons for badges */
+.icon {
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+/* -------------------------
+   TABLE
+--------------------------*/
+.table-wrap {
+  margin-top: 40px;
+  overflow-x: auto;
+  border-radius: 14px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  animation: slideUp 1.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 550px;
+}
+
+th, td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+
+th {
+  background: var(--glass);
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,0.06);
+  transition: 0.2s;
+}
+
+.feature {
+  font-weight: 600;
+}
+
+/* STATUS ICON STYLES */
+.status {
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.yes {
+  color: #00d68f;
+  border-color: rgba(0,255,180,0.35);
+  background: rgba(0,255,180,0.12);
+}
+
+.no {
+  color: #ff6b6b;
+  border-color: rgba(255,100,100,0.35);
+  background: rgba(255,80,80,0.12);
+}
+
+.maybe {
+  color: #9eb4c8;
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ---------------------------
+   MOBILE OPTIMIZATION
+----------------------------*/
+@media (max-width: 700px) {
+  h1 { font-size: 26px; }
+  p.lead { font-size: 14px; }
+  th, td { font-size: 13px; padding: 12px 14px; }
+}
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>ModernOS Comparison</h1>
-      <p class="lead">A simple comparison of core features across platforms.</p>
-    </header>
+<div class="hero-bg"></div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Windows</th>
-            <th>macOS</th>
-            <th>Linux</th>
-            <th>ModernOS</th>
-          </tr>
-        </thead>
-        <tbody>
+<div class="container">
 
-          <tr>
-            <td class="feature">Glass/Neon UI</td>
-            <td><span class="no">No</span></td>
-            <td><span class="yes">Yes</span></td>
-            <td><span class="no">No</span></td>
-            <td><span class="yes">Yes</span></td>
-          </tr>
-
-          <tr>
-            <td class="feature">Ads in System</td>
-            <td><span class="yes">Yes</span></td>
-            <td><span class="maybe">Some</span></td>
-            <td><span class="no">No</span></td>
-            <td><span class="no">No</span></td>
-          </tr>
-
-          <tr>
-            <td class="feature">Security Model</td>
-            <td><span class="maybe">Medium</span></td>
-            <td><span class="yes">High</span></td>
-            <td><span class="yes">High</span></td>
-            <td><span class="yes">Ultra-Sandboxed</span></td>
-          </tr>
-
-          <tr>
-            <td class="feature">Customization</td>
-            <td><span class="maybe">Medium</span></td>
-            <td><span class="no">Low</span></td>
-            <td><span class="yes">Very High</span></td>
-            <td><span class="yes">High</span></td>
-          </tr>
-
-          <tr>
-            <td class="feature">Package Manager</td>
-            <td><span class="no">No</span></td>
-            <td><span class="no">No</span></td>
-            <td><span class="yes">Yes</span></td>
-            <td><span class="yes">CortexPM</span></td>
-          </tr>
-
-        </tbody>
-      </table>
+  <header>
+    <div class="logo">
+      <!-- ModernOS placeholder logo -->
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" stroke-width="6" stroke="currentColor" fill="none"/>
+        <path d="M30 60 L50 30 L70 60" stroke="currentColor" stroke-width="6" fill="none"/>
+      </svg>
     </div>
+
+    <h1>ModernOS Comparison</h1>
+    <p class="lead">A clean overview of how ModernOS stacks up against other platforms.</p>
+
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <span class="icon">🌗</span> Toggle Theme
+    </div>
+  </header>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Windows</th>
+          <th>macOS</th>
+          <th>Linux</th>
+          <th>ModernOS</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="feature">Glass/Neon UI</td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
+        </tr>
+
+        <tr>
+          <td class="feature">Ads in System</td>
+          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
+          <td><span class="status maybe"><span class="icon">⚠</span>Some</span></td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+        </tr>
+
+        <tr>
+          <td class="feature">Security Model</td>
+          <td><span class="status maybe"><span class="icon">•</span>Medium</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
+          <td><span class="status yes"><span class="icon">🔒</span>Ultra-Sandboxed</span></td>
+        </tr>
+
+        <tr>
+          <td class="feature">Customization</td>
+          <td><span class="status maybe"><span class="icon">•</span>Medium</span></td>
+          <td><span class="status no"><span class="icon">✖</span>Low</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>Very High</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
+        </tr>
+
+        <tr>
+          <td class="feature">Package Manager</td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+          <td><span class="status no"><span class="icon">✖</span>No</span></td>
+          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
+          <td><span class="status yes"><span class="icon">📦</span>CortexPM</span></td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+}
+</script>
 
 </body>
 </html>
