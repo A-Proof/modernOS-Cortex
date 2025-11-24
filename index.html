@@ -2,578 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ModernOS — The Future of Desktop</title>
-  <meta name="description" content="ModernOS — a sleek, glass UI OS with modular updates, local AI, and high performance." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ModernOS — Comparison</title>
   <style>
-    :root{
-      --bg:#08101a;
-      --card: rgba(255,255,255,0.06);
-      --glass: rgba(255,255,255,0.08);
-      --glass-2: rgba(255,255,255,0.04);
-      --accent: #6ef0ff;
-      --accent-2: #9b7bff;
-      --muted: #9fb3c8;
-      --glass-border: rgba(255,255,255,0.12);
-      --success: #1dd17b;
-      --danger: #ff6b6b;
-      --neutral: #cbd7e3;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    body {
+      margin: 0;
+      font-family: system-ui, Inter, sans-serif;
+      background: #0a0f17;
+      color: #e3edf7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(107,75,255,0.08), transparent 4%),
-                  linear-gradient(180deg, rgba(6,13,20,1) 0%, rgba(6,12,16,1) 100%);
-      color:var(--neutral);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    .container {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 20px;
     }
 
-    .container{
-      max-width:1120px;
-      margin:48px auto;
-      padding:28px;
+    header {
+      padding: 30px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
     }
 
-    header.hero{
-      display:flex;
-      gap:20px;
-      align-items:center;
-      padding:28px;
-      border-radius:18px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px) saturate(110%);
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #c7f4ff;
     }
 
-    .logo {
-      width:96px;
-      height:96px;
-      flex:0 0 96px;
-      border-radius:20px;
-      background: linear-gradient(135deg,var(--accent-2),var(--accent));
-      display:grid;
-      place-items:center;
-      color:#021018;
-      font-weight:800;
-      font-size:28px;
-      box-shadow: 0 8px 30px rgba(107,75,255,0.18), 0 2px 8px rgba(0,0,0,0.6);
-      transform: translateZ(0);
+    p.lead {
+      margin-top: 8px;
+      color: #9eb4c8;
+      font-size: 15px;
     }
 
-    .hero-content{
-      flex:1;
-      min-width:0;
+    .table-wrap {
+      margin-top: 30px;
+      overflow-x: auto;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
     }
 
-    .kicker{
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:1.5px;
-      color:var(--muted);
-      margin-bottom:8px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 550px;
     }
 
-    h1{
-      margin:0 0 8px 0;
-      font-size:28px;
-      line-height:1.05;
+    th, td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      color: #dffaff;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .feature {
+      font-weight: 600;
       color: #eaf8ff;
-      text-shadow: 0 6px 30px rgba(107,75,255,0.08);
     }
 
-    p.lead{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
+    .badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
     }
 
-    .hero-ctas{
-      margin-top:16px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border-radius:12px;
-      font-weight:600;
-      cursor:pointer;
-      text-decoration:none;
-      border:1px solid rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px);
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
-
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-primary{
-      background: linear-gradient(90deg, rgba(110,240,255,0.12), rgba(155,123,255,0.08));
-      color:var(--accent);
-      box-shadow: 0 8px 30px rgba(107,75,255,0.12), 0 2px 8px rgba(0,0,0,0.5);
-      border: 1px solid rgba(110,240,255,0.06);
-    }
-    .btn-ghost{
-      background:transparent;
-      color:var(--neutral);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-
-    main.sections{
-      margin-top:20px;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:20px;
-    }
-
-    /* Comparison card */
-    .card{
-      padding:18px;
-      border-radius:14px;
-      background: linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.55);
-      backdrop-filter: blur(8px) saturate(120%);
-    }
-
-    .table-wrap{
-      overflow:auto;
-      border-radius:10px;
-      margin-top:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
-      padding:8px;
-    }
-
-    table.compare{
-      width:100%;
-      border-collapse:collapse;
-      min-width:720px;
-      color:var(--neutral);
-    }
-
-    table.compare thead th{
-      text-align:left;
-      padding:12px 16px;
-      font-weight:700;
-      font-size:13px;
-      color:#dff9ff;
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      position:sticky;
-      top:0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      backdrop-filter: blur(6px);
-    }
-
-    table.compare tbody td{
-      padding:12px 16px;
-      border-bottom:1px dashed rgba(255,255,255,0.03);
-      vertical-align:middle;
-      font-size:14px;
-      color:var(--neutral);
-    }
-
-    .feature-name{
-      font-weight:600;
-      color:#f3fbff;
-      min-width:260px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:0.2px;
-    }
-
-    .badge.yes{ background: linear-gradient(90deg, rgba(29,209,123,0.12), rgba(155,123,255,0.03)); color:var(--success); border:1px solid rgba(29,209,123,0.06);}
-    .badge.no{ background: rgba(255,255,255,0.02); color:var(--danger); border:1px solid rgba(255,107,107,0.06); }
-    .badge.maybe{ background: rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.03); }
-
-    /* Right column features */
-    .right {
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-
-    .feature-list{
-      display:grid;
-      gap:10px;
-    }
-
-    .feature-item{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      padding:12px;
-      border-radius:10px;
-      background: linear-gradient(180deg,var(--glass-2), rgba(255,255,255,0.008));
-      border: 1px solid rgba(255,255,255,0.02);
-    }
-
-    .feature-item h4{ margin:0; color:#eaf8ff; font-size:15px;}
-    .feature-item p{ margin:4px 0 0 0; color:var(--muted); font-size:13px; line-height:1.25;}
-
-    .accent-line{
-      height:3px;
-      border-radius:999px;
-      background: linear-gradient(90deg,var(--accent-2), var(--accent));
-      margin:18px 0;
-      box-shadow: 0 8px 22px rgba(155,123,255,0.06);
-    }
-
-    footer{
-      margin-top:28px;
-      color:var(--muted);
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .small{
-      font-size:12px;
-    }
-
-    /* responsive */
-    @media (max-width:980px){
-      main.sections{ grid-template-columns:1fr; }
-      .logo{ width:76px; height:76px; font-size:22px; border-radius:14px; }
-      .container{ padding:18px; margin:28px auto; }
-      table.compare{ min-width:640px; }
-    }
-
-    @media (max-width:640px){
-      table.compare{ min-width:560px; font-size:13px; }
-    }
-
-    /* subtle animated shimmering row on hover */
-    table.compare tbody tr:hover{
-      transform: translateY(-2px);
-      transition: transform .18s ease;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-    }
-
-    /* pill legend */
-    .legend{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px;}
-    .legend .litem{ padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px; color:var(--neutral); background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); }
+    .yes { background: rgba(0,255,180,0.12); color: #00d68f; border: 1px solid rgba(0,255,180,0.2);}
+    .no { background: rgba(255,60,60,0.12); color: #ff6b6b; border: 1px solid rgba(255,60,60,0.2);}
+    .maybe { background: rgba(255,255,255,0.1); color: #9eb4c8; border: 1px solid rgba(255,255,255,0.18);}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero" role="banner" aria-labelledby="modernos-title">
-      <div class="logo" aria-hidden="true">M✦</div>
-      <div class="hero-content">
-        <div class="kicker">ModernOS — Design Comparison</div>
-        <h1 id="modernos-title">ModernOS vs Windows, macOS & Linux</h1>
-        <p class="lead">
-          A quick at-a-glance comparison highlighting the UI, privacy, developer features, and unique ModernOS services.
-          Built for a cinematic desktop experience with modular updates and local AI.
-        </p>
 
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#" role="button" aria-label="Download ModernOS (placeholder)">
-            ⤓ Download Demo
-          </a>
-          <a class="btn btn-ghost" href="#compare" role="button">View comparison</a>
-          <span class="legend" aria-hidden="true">
-            <span class="litem">✅ = Supported</span>
-            <span class="litem">❌ = Not supported</span>
-            <span class="litem">⚠️ = Partial / Platform-dependent</span>
-          </span>
-        </div>
-      </div>
+  <div class="container">
+    <header>
+      <h1>ModernOS Comparison</h1>
+      <p class="lead">A simple comparison of core features across platforms.</p>
     </header>
 
-    <main class="sections" role="main">
-      <section class="card" id="compare" aria-labelledby="compare-heading">
-        <h2 id="compare-heading" style="margin:0;font-size:16px;color:#e8fbff">Feature Comparison</h2>
-        <div class="table-wrap" role="region" aria-label="Operating system comparison table">
-          <table class="compare" summary="Comparison of features across Windows, macOS, Linux and ModernOS">
-            <thead>
-              <tr>
-                <th scope="col">Feature</th>
-                <th scope="col">Windows</th>
-                <th scope="col">macOS</th>
-                <th scope="col">Linux</th>
-                <th scope="col">ModernOS</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="feature-name">Glass UI / Neon UI</td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge yes">✅</span></td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge yes">✅</span></td>
-              </tr>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Windows</th>
+            <th>macOS</th>
+            <th>Linux</th>
+            <th>ModernOS</th>
+          </tr>
+        </thead>
+        <tbody>
 
-              <tr>
-                <td class="feature-name">Ads in System</td>
-                <td><span class="badge yes">✅</span></td>
-                <td><span class="badge maybe">⚠️ (Some services)</span></td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge no">❌</span></td>
-              </tr>
+          <tr>
+            <td class="feature">Glass/Neon UI</td>
+            <td><span class="no">No</span></td>
+            <td><span class="yes">Yes</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="yes">Yes</span></td>
+          </tr>
 
-              <tr>
-                <td class="feature-name">Security Model</td>
-                <td><span class="badge maybe">Good</span></td>
-                <td><span class="badge yes">Excellent</span></td>
-                <td><span class="badge yes">Excellent</span></td>
-                <td><span class="badge yes">Ultra-sandboxed</span></td>
-              </tr>
+          <tr>
+            <td class="feature">Ads in System</td>
+            <td><span class="yes">Yes</span></td>
+            <td><span class="maybe">Some</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
 
-              <tr>
-                <td class="feature-name">Customization</td>
-                <td><span class="badge maybe">Moderate</span></td>
-                <td><span class="badge no">Low</span></td>
-                <td><span class="badge yes">Very High</span></td>
-                <td><span class="badge yes">High (Modules + Themes)</span></td>
-              </tr>
+          <tr>
+            <td class="feature">Security Model</td>
+            <td><span class="maybe">Medium</span></td>
+            <td><span class="yes">High</span></td>
+            <td><span class="yes">High</span></td>
+            <td><span class="yes">Ultra-Sandboxed</span></td>
+          </tr>
 
-              <tr>
-                <td class="feature-name">Package Manager</td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge yes">✅</span></td>
-                <td><span class="badge yes">✅ (CortexPM)</span></td>
-              </tr>
+          <tr>
+            <td class="feature">Customization</td>
+            <td><span class="maybe">Medium</span></td>
+            <td><span class="no">Low</span></td>
+            <td><span class="yes">Very High</span></td>
+            <td><span class="yes">High</span></td>
+          </tr>
 
-              <tr>
-                <td class="feature-name">Touch & Gesture</td>
-                <td><span class="badge maybe">Partial</span></td>
-                <td><span class="badge yes">Strong</span></td>
-                <td><span class="badge maybe">Depends</span></td>
-                <td><span class="badge yes">Fully integrated</span></td>
-              </tr>
+          <tr>
+            <td class="feature">Package Manager</td>
+            <td><span class="no">No</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="yes">Yes</span></td>
+            <td><span class="yes">CortexPM</span></td>
+          </tr>
 
-              <tr>
-                <td class="feature-name">Native Dev Environment</td>
-                <td><span class="badge yes">Good</span></td>
-                <td><span class="badge yes">Excellent</span></td>
-                <td><span class="badge yes">Excellent</span></td>
-                <td><span class="badge yes">Built-in Cortex Studio</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">App Ecosystem</td>
-                <td><span class="badge yes">Very Large</span></td>
-                <td><span class="badge yes">Large</span></td>
-                <td><span class="badge maybe">Medium/Large</span></td>
-                <td><span class="badge yes">Curated + Sideload</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">System Resource Efficiency</td>
-                <td><span class="badge maybe">Medium</span></td>
-                <td><span class="badge yes">High</span></td>
-                <td><span class="badge maybe">Variable</span></td>
-                <td><span class="badge yes">High (micro-core)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Virtualization</td>
-                <td><span class="badge yes">Hyper-V</span></td>
-                <td><span class="badge yes">Hypervisor</span></td>
-                <td><span class="badge yes">KVM</span></td>
-                <td><span class="badge yes">Integrated HyperCells</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Gaming Support</td>
-                <td><span class="badge yes">Excellent</span></td>
-                <td><span class="badge maybe">Medium</span></td>
-                <td><span class="badge maybe">Medium/High</span></td>
-                <td><span class="badge yes">High (DirectCore)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Filesystem</td>
-                <td><span class="badge maybe">NTFS</span></td>
-                <td><span class="badge maybe">APFS</span></td>
-                <td><span class="badge yes">EXT4/Btrfs/ZFS</span></td>
-                <td><span class="badge yes">NovaFS (snapshots)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Open Source</td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge no">❌</span></td>
-                <td><span class="badge yes">✅</span></td>
-                <td><span class="badge maybe">Hybrid core</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">UI Animation Quality</td>
-                <td><span class="badge maybe">Medium</span></td>
-                <td><span class="badge yes">High</span></td>
-                <td><span class="badge maybe">Low/Var</span></td>
-                <td><span class="badge yes">High-end cinematic</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">AI Integration</td>
-                <td><span class="badge maybe">Copilot</span></td>
-                <td><span class="badge maybe">Siri</span></td>
-                <td><span class="badge maybe">Varies</span></td>
-                <td><span class="badge yes">CortexAI (local+cloud)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Updates</td>
-                <td><span class="badge maybe">Frequent, invasive</span></td>
-                <td><span class="badge yes">Smooth</span></td>
-                <td><span class="badge maybe">Depends</span></td>
-                <td><span class="badge yes">Modular, atomic rollbacks</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Terminal / Dev Shell</td>
-                <td><span class="badge yes">PowerShell</span></td>
-                <td><span class="badge yes">zsh</span></td>
-                <td><span class="badge yes">bash/zsh</span></td>
-                <td><span class="badge yes">CortexShell</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">ISO Boot Support</td>
-                <td><span class="badge yes">Yes</span></td>
-                <td><span class="badge no">Not directly</span></td>
-                <td><span class="badge yes">Yes</span></td>
-                <td><span class="badge yes">Hybrid EFI</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">System Theming</td>
-                <td><span class="badge maybe">Limited</span></td>
-                <td><span class="badge no">None</span></td>
-                <td><span class="badge yes">Extensive</span></td>
-                <td><span class="badge yes">Extensive (NeonGlass)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Stability</td>
-                <td><span class="badge maybe">Good</span></td>
-                <td><span class="badge yes">Very high</span></td>
-                <td><span class="badge yes">Very high</span></td>
-                <td><span class="badge yes">High (Core-locked)</span></td>
-              </tr>
-
-              <tr>
-                <td class="feature-name">Cost</td>
-                <td><span class="badge maybe">Paid</span></td>
-                <td><span class="badge maybe">Paid (hardware)</span></td>
-                <td><span class="badge yes">Free</span></td>
-                <td><span class="badge yes">Free OS, Paid Pro tools</span></td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <aside class="right">
-        <div class="card" aria-labelledby="right-heading-1">
-          <h3 id="right-heading-1" style="margin:0 0 8px 0;color:#e8fbff;font-size:15px;">Why ModernOS?</h3>
-          <div class="feature-list">
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>Design-forward UI</h4>
-                <p>Purpose-built glass + neon visuals with cinematic motion and smooth, adaptive theming across devices.</p>
-              </div>
-            </div>
-
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>Privacy-first</h4>
-                <p>Local-first AI features with opt-in cloud enhancements; no forced ads in system UI.</p>
-              </div>
-            </div>
-
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>Dev-first tools</h4>
-                <p>Integrated Cortex Studio, built-in package manager and sandboxed runtime for safe development and distribution.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accent-line" aria-hidden="true"></div>
-
-          <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;">
-            <div>
-              <strong style="color:#eaf8ff">Get the look — keep control</strong>
-              <div style="color:var(--muted);font-size:13px;margin-top:6px">Modular updates, atomic rollbacks, and a curated app store.</div>
-            </div>
-            <div style="text-align:right">
-              <a class="btn btn-primary" href="#" aria-label="Request early access">Request Early Access</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" aria-labelledby="right-heading-2">
-          <h3 id="right-heading-2" style="margin:0 0 8px 0;color:#e8fbff;font-size:15px;">Quick Specs</h3>
-          <div style="display:grid;gap:8px;margin-top:6px;">
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>Kernel</h4>
-                <p>Micro-hybrid kernel with sandboxed modules and snapshot isolation.</p>
-              </div>
-            </div>
-
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>FS</h4>
-                <p>NovaFS — copy-on-write snapshots + atomic system updates.</p>
-              </div>
-            </div>
-
-            <div class="feature-item">
-              <div style="flex:1">
-                <h4>AI</h4>
-                <p>CortexAI — local models with cloud sync for power users (opt-in).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </aside>
-    </main>
-
-    <footer>
-      <div class="small">© <strong>ModernOS</strong> — Crafted with neon glass and care.</div>
-      <div class="small">Built for designers, developers, and people who love beautiful, fast computers.</div>
-    </footer>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <script>
-    // small enhancement: make "Download Demo" show a temporary tooltip / change to "Coming soon"
-    (function(){
-      const dl = document.querySelector('.btn-primary[href="#"]');
-      if(!dl) return;
-      dl.addEventListener('click', function(e){
-        e.preventDefault();
-        const prior = dl.textContent;
-        dl.textContent = "Coming soon • Demo";
-        dl.style.opacity = "0.96";
-        setTimeout(()=> dl.textContent = prior, 2200);
-      });
-    })();
-  </script>
 </body>
 </html>
