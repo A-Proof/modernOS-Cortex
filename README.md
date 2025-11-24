@@ -13,3 +13,10 @@
 [Actual Repo](https://github.com/A-Proof/ModernOS-Cortex/releases)
 * ModernOS Evermore (v1.0) - Awaits formal release.
   
+## Features
+ModernOS Evermore will include many features for everyday use, including a browser, glassy and recognizable elements and more! The full release day is unknown, but beta releases will start streaming on the beta repo along with helper scripts.
+
+## Website
+
+The rest of the info is on:
+[Link](https://github.io/A-Proof/modernOS-Cortex)
