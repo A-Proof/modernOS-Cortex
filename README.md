@@ -19,4 +19,4 @@ ModernOS Evermore will include many features for everyday use, including a brows
 ## Website
 
 The rest of the info is on:
-[Link](https://github.io/A-Proof/modernOS-Cortex)
+[Link](https://a-proof.github.io/modernOS-Cortex/)
