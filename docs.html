@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - ModernOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">ModernOS</a></div>
+        <div class="nav-links">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#download">Download</a>
+            <a href="docs.html" class="active">Documentation</a>
+            <a href="about.html">About</a>
+            <a href="https://github.com/arthur/ModernOS-Cortex" class="github-link">GitHub</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="sidebar">
+            <h3>Getting Started</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#running">Running in QEMU</a></li>
+            </ul>
+            <h3>Architecture</h3>
+            <ul>
+                <li><a href="#kernel">Kernel</a></li>
+                <li><a href="#flutter-embedder">Flutter Embedder</a></li>
+                <li><a href="#system-calls">System Calls</a></li>
+            </ul>
+            <h3>Development</h3>
+            <ul>
+                <li><a href="#building">Building from Source</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+            </ul>
+        </aside>
+
+        <main class="docs-content">
+            <section id="introduction">
+                <h1>Documentation</h1>
+                <p>Welcome to the ModernOS documentation. ModernOS is a next-generation operating system built from
+                    scratch with a custom kernel and a Flutter-based user interface.</p>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Currently, ModernOS is distributed as a live ISO image. You can download the latest release from our
+                    GitHub repository.</p>
+            </section>
+
+            <section id="running">
+                <h2>Running in QEMU</h2>
+                <p>The easiest way to try ModernOS is using QEMU. We provide a helper script for this.</p>
+                <div class="code-block">
+                    <pre><code>./run.sh</code></pre>
+                </div>
+                <p>Or manually:</p>
+                <div class="code-block">
+                    <pre><code>qemu-system-x86_64 -drive file=ModernOS-1.0.iso,format=raw,media=cdrom,readonly=on -m 256M -serial stdio -vga std</code></pre>
+                </div>
+            </section>
+
+            <section id="kernel">
+                <h2>Kernel</h2>
+                <p>Our kernel is a custom 64-bit kernel written in C++ and Assembly. It features a hybrid architecture
+                    with a focus on low latency and real-time capabilities.</p>
+            </section>
+
+            <section id="flutter-embedder">
+                <h2>Flutter Embedder</h2>
+                <p>The UI is powered by a custom Flutter embedder that runs directly on the kernel's framebuffer. This
+                    allows for a smooth, hardware-accelerated experience without the overhead of a traditional windowing
+                    system like X11 or Wayland.</p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 ModernOS Team. Open Source under MIT License.</p>
+    </footer>
+</body>
+
+</html>
