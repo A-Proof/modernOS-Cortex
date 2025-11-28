@@ -1,323 +1,844 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ModernOS – Comparison</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModernOS - The Future of Browser Operating Systems</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap');
 
-<style>
-/* -------------------------
-   GLOBAL DESIGN
---------------------------*/
-:root {
-  --bg-dark: #0a0f17;
-  --bg-light: #f4f7ff;
-  --text-dark: #e5f6ff;
-  --text-light: #1b1e23;
-  --glass-dark: rgba(255,255,255,0.05);
-  --glass-light: rgba(0,0,0,0.05);
-  --border-dark: rgba(255,255,255,0.09);
-  --border-light: rgba(0,0,0,0.09);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html[data-theme="dark"] {
-  --bg: var(--bg-dark);
-  --text: var(--text-dark);
-  --glass: var(--glass-dark);
-  --border: var(--border-dark);
-}
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background: #000000;
+            color: white;
+            overflow-x: hidden;
+        }
 
-html[data-theme="light"] {
-  --bg: var(--bg-light);
-  --text: var(--text-light);
-  --glass: var(--glass-light);
-  --border: var(--border-light);
-}
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-body {
-  margin: 0;
-  font-family: system-ui, Inter, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  transition: background 0.5s, color 0.5s;
-}
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            animation: float 30s infinite ease-in-out;
+        }
 
-/* -------------------------
-   HERO GRADIENT ANIMATION
---------------------------*/
-.hero-bg {
-  position: fixed;
-  top: -150px;
-  left: -150px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0,200,255,0.4), transparent 70%);
-  filter: blur(100px);
-  animation: float 12s infinite linear alternate;
-  pointer-events: none;
-}
-@keyframes float {
-  from { transform: translate(0,0); }
-  to   { transform: translate(200px,120px); }
-}
+        .orb1 {
+            width: 700px;
+            height: 700px;
+            background: linear-gradient(45deg, #f72f85, #a855f7);
+            top: -350px;
+            right: -200px;
+        }
 
-/* -------------------------
-   PAGE STRUCTURE
---------------------------*/
-.container {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 20px;
-  position: relative;
-}
+        .orb2 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(45deg, #00d4ff, #10b981);
+            bottom: -300px;
+            left: -200px;
+            animation-delay: 10s;
+        }
 
-/* -------------------------
-   HEADER + LOGO
---------------------------*/
-header {
-  text-align: center;
-  padding: 35px 25px;
-  border-radius: 18px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(16px);
-}
+        .orb3 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, #7b2ff7, #f72f85);
+            top: 50%;
+            left: 50%;
+            animation-delay: 20s;
+        }
 
-.logo {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 15px;
-  opacity: 0;
-  animation: fadeIn 1.5s forwards ease-out;
-}
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(150px, -150px) rotate(180deg); }
+        }
 
-/* Placeholder ModernOS SVG logo */
-.logo svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--text);
-}
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(247, 47, 133, 0.2);
+            padding: 20px 40px;
+        }
 
-@keyframes fadeIn {
-  to { opacity: 1; transform: scale(1); }
-}
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-h1 {
-  margin: 0;
-  font-size: 34px;
-  font-weight: 700;
-}
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f72f85, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.05em;
+        }
 
-p.lead {
-  margin-top: 8px;
-  color: var(--text);
-  opacity: 0.7;
-}
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
 
-/* -------------------------
-   THEME TOGGLE
---------------------------*/
-.theme-toggle {
-  margin-top: 15px;
-  cursor: pointer;
-  padding: 8px 14px;
-  border-radius: 20px;
-  display: inline-flex;
-  gap: 8px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  transition: 0.25s;
-}
-.theme-toggle:hover {
-  transform: scale(1.05);
-}
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
 
-/* Icons for badges */
-.icon {
-  font-size: 15px;
-  vertical-align: middle;
-}
+        .nav-link:hover {
+            color: #f72f85;
+        }
 
-/* -------------------------
-   TABLE
---------------------------*/
-.table-wrap {
-  margin-top: 40px;
-  overflow-x: auto;
-  border-radius: 14px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  animation: slideUp 1.3s ease-out;
-}
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 140px 60px 80px;
+        }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 120px;
+            animation: fadeInUp 1s ease;
+        }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 550px;
-}
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-th, td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
-  font-size: 15px;
-}
+        .hero-badge {
+            display: inline-block;
+            padding: 12px 28px;
+            background: rgba(247, 47, 133, 0.1);
+            border: 1px solid rgba(247, 47, 133, 0.3);
+            border-radius: 50px;
+            color: #f72f85;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
 
-th {
-  background: var(--glass);
-  font-weight: 600;
-}
+        h1 {
+            font-size: 8em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f72f85 0%, #7b2ff7 50%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease 0.3s backwards, textGlow 3s ease-in-out infinite;
+        }
 
-tbody tr:hover {
-  background: rgba(255,255,255,0.06);
-  transition: 0.2s;
-}
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 40px rgba(247, 47, 133, 0.6)); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 60px rgba(247, 47, 133, 0.9)); }
+        }
 
-.feature {
-  font-weight: 600;
-}
+        .tagline {
+            color: #a0a0ff;
+            font-size: 2em;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
 
-/* STATUS ICON STYLES */
-.status {
-  font-size: 15px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  border: 1px solid;
-}
+        .hero-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
 
-.yes {
-  color: #00d68f;
-  border-color: rgba(0,255,180,0.35);
-  background: rgba(0,255,180,0.12);
-}
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
 
-.no {
-  color: #ff6b6b;
-  border-color: rgba(255,100,100,0.35);
-  background: rgba(255,80,80,0.12);
-}
+        .hero-btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 2px solid;
+        }
 
-.maybe {
-  color: #9eb4c8;
-  border-color: rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.08);
-}
+        .btn-primary {
+            background: linear-gradient(135deg, #f72f85, #7b2ff7);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 40px rgba(247, 47, 133, 0.4);
+        }
 
-/* ---------------------------
-   MOBILE OPTIMIZATION
-----------------------------*/
-@media (max-width: 700px) {
-  h1 { font-size: 26px; }
-  p.lead { font-size: 14px; }
-  th, td { font-size: 13px; padding: 12px 14px; }
-}
-</style>
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(247, 47, 133, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #f72f85;
+        }
+
+        /* Section Titles */
+        .section {
+            margin-bottom: 120px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(247, 47, 133, 0.1);
+            border: 1px solid rgba(247, 47, 133, 0.3);
+            border-radius: 50px;
+            color: #f72f85;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-title {
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f72f85, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 50px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:nth-child(1) { --color: #f72f85; }
+        .feature-card:nth-child(2) { --color: #7b2ff7; }
+        .feature-card:nth-child(3) { --color: #00d4ff; }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            background: rgba(0, 0, 0, 0.8);
+            border-color: var(--color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 40px var(--color);
+        }
+
+        .feature-icon {
+            font-size: 4em;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        .feature-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .feature-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        /* Releases Section */
+        .releases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 50px;
+        }
+
+        .release-column {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .release-column.beta {
+            border-color: rgba(251, 146, 60, 0.3);
+        }
+
+        .release-column.stable {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .release-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .release-icon {
+            font-size: 3em;
+        }
+
+        .release-title {
+            font-size: 2em;
+            font-weight: 800;
+        }
+
+        .release-badge {
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-beta {
+            background: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .badge-stable {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .releases-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .releases-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .releases-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .releases-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f72f85, #7b2ff7);
+            border-radius: 10px;
+        }
+
+        .release-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .release-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--hover-color);
+            transform: translateX(10px);
+        }
+
+        .release-column.beta .release-item {
+            --hover-color: #fb923c;
+        }
+
+        .release-column.stable .release-item {
+            --hover-color: #10b981;
+        }
+
+        .release-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .release-date {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .release-desc {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1em;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(247, 47, 133, 0.3);
+            border-top-color: #f72f85;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Why ModernOS Section */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reason-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            border-color: #f72f85;
+            box-shadow: 0 15px 40px rgba(247, 47, 133, 0.3);
+        }
+
+        .reason-number {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f72f85, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .reason-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .reason-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 1px solid rgba(247, 47, 133, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1200px) {
+            h1 { font-size: 6em; }
+            .section-title { font-size: 3em; }
+            .releases-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 120px 30px 60px; }
+            h1 { font-size: 4em; }
+            .tagline { font-size: 1.5em; }
+            .hero-buttons { flex-direction: column; }
+            .hero-btn { width: 100%; }
+            .features-grid,
+            .reasons-grid,
+            .releases-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="hero-bg"></div>
-
-<div class="container">
-
-  <header>
-    <div class="logo">
-      <!-- ModernOS placeholder logo -->
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" stroke-width="6" stroke="currentColor" fill="none"/>
-        <path d="M30 60 L50 30 L70 60" stroke="currentColor" stroke-width="6" fill="none"/>
-      </svg>
+    <div class="bg-animation">
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+        <div class="gradient-orb orb3"></div>
     </div>
 
-    <h1>ModernOS Comparison</h1>
-    <p class="lead">A clean overview of how ModernOS stacks up against other platforms.</p>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">💻 MODERNOS</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">← Nova Project</a>
+                <a href="#future" class="nav-link">The Future</a>
+                <a href="#why" class="nav-link">Why ModernOS</a>
+                <a href="#releases" class="nav-link">Releases</a>
+                <a href="osdemo.html" class="nav-link">Live Demo</a>
+            </div>
+        </nav>
+    </header>
 
-    <div class="theme-toggle" onclick="toggleTheme()">
-      <span class="icon">🌗</span> Toggle Theme
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge">🚀 THE FUTURE IS HERE</div>
+            <h1>ModernOS</h1>
+            <p class="tagline">Your Browser is Your Operating System</p>
+            <p class="hero-description">
+                Experience a revolutionary operating system that runs entirely in your browser. No installation, no downloads, just pure innovation at your fingertips.
+            </p>
+            <div class="hero-buttons">
+                <a href="osdemo.html" class="hero-btn btn-primary">Try Live Demo</a>
+                <a href="#releases" class="hero-btn btn-secondary">Browse Releases</a>
+            </div>
+        </div>
+
+        <!-- The Future Section -->
+        <div class="section" id="future">
+            <div class="section-header">
+                <div class="section-badge">The Future</div>
+                <h2 class="section-title">Shaping Tomorrow</h2>
+                <p class="section-desc">
+                    ModernOS is redefining what's possible in browser-based computing
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Universal Access</h3>
+                    <p class="feature-text">
+                        Access your complete desktop environment from any device with a browser. Your OS goes wherever you go, no syncing required.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Lightning Performance</h3>
+                    <p class="feature-text">
+                        Built with cutting-edge web technologies, ModernOS delivers desktop-class performance right in your browser with zero installation.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Beautiful Design</h3>
+                    <p class="feature-text">
+                        Stunning modern interface with smooth animations, custom cursors, and glassmorphic effects that make computing a joy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why ModernOS Section -->
+        <div class="section" id="why">
+            <div class="section-header">
+                <div class="section-badge">Why Choose Us</div>
+                <h2 class="section-title">Why ModernOS?</h2>
+                <p class="section-desc">
+                    It's not just an OS, it's a revolution in computing
+                </p>
+            </div>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-number">01</div>
+                    <h3 class="reason-title">Zero Installation</h3>
+                    <p class="reason-text">
+                        Open your browser and you're in. No downloads, no setup, no hassle. Just instant access to a full-featured operating system.
+                    </p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-number">02</div>
+                    <h3 class="reason-title">Cross-Platform Freedom</h3>
+                    <p class="reason-text">
+                        Works on Windows, Mac, Linux, tablets, phones - anywhere with a modern browser. True platform independence.
+                    </p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-number">03</div>
+                    <h3 class="reason-title">Always Updated</h3>
+                    <p class="reason-text">
+                        Refresh your browser for the latest features. No update downloads, no restart required. Always running the newest version.
+                    </p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-number">04</div>
+                    <h3 class="reason-title">Privacy First</h3>
+                    <p class="reason-text">
+                        Everything runs locally in your browser. Your data stays on your device. No cloud dependencies, no tracking.
+                    </p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-number">05</div>
+                    <h3 class="reason-title">Developer Friendly</h3>
+                    <p class="reason-text">
+                        Built with modern web technologies. Open, extensible, and hackable. Customize and extend to your heart's content.
+                    </p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-number">06</div>
+                    <h3 class="reason-title">Insanely Cool</h3>
+                    <p class="reason-text">
+                        From the custom cursor to draggable windows to the boot sequence - every detail is crafted to amaze. Computing reimagined.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Releases Section -->
+        <div class="section" id="releases">
+            <div class="section-header">
+                <div class="section-badge">Downloads</div>
+                <h2 class="section-title">Get ModernOS</h2>
+                <p class="section-desc">
+                    Choose from beta releases or stable production versions
+                </p>
+            </div>
+
+            <div class="releases-container">
+                <!-- Beta Releases -->
+                <div class="release-column beta">
+                    <div class="release-header">
+                        <div class="release-icon">🧪</div>
+                        <div style="flex: 1;">
+                            <h3 class="release-title">Beta Releases</h3>
+                            <span class="release-badge badge-beta">Experimental</span>
+                        </div>
+                    </div>
+                    <div class="releases-list" id="betaReleases">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <div>Loading beta releases from GitHub...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stable Releases -->
+                <div class="release-column stable">
+                    <div class="release-header">
+                        <div class="release-icon">✅</div>
+                        <div style="flex: 1;">
+                            <h3 class="release-title">Stable Releases</h3>
+                            <span class="release-badge badge-stable">Production Ready</span>
+                        </div>
+                    </div>
+                    <div class="releases-list" id="stableReleases">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <div>Loading stable releases from GitHub...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Windows</th>
-          <th>macOS</th>
-          <th>Linux</th>
-          <th>ModernOS</th>
-        </tr>
-      </thead>
+    <footer class="footer">
+        <p>© 2025 ModernOS. Part of The Nova Project. Built with ❤️ and innovation.</p>
+        <p style="margin-top: 15px;">
+            <a href="index.html" style="color: #f72f85; text-decoration: none;">← Back to Nova Project</a>
+        </p>
+    </footer>
 
-      <tbody>
-        <tr>
-          <td class="feature">Glass/Neon UI</td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
-        </tr>
+    <script>
+        // Fetch GitHub releases
+        async function fetchGitHubReleases(repo) {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${repo}/releases`);
+                if (!response.ok) throw new Error('Failed to fetch');
+                return await response.json();
+            } catch (error) {
+                console.error(`Error fetching ${repo}:`, error);
+                return null;
+            }
+        }
 
-        <tr>
-          <td class="feature">Ads in System</td>
-          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
-          <td><span class="status maybe"><span class="icon">⚠</span>Some</span></td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-        </tr>
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
 
-        <tr>
-          <td class="feature">Security Model</td>
-          <td><span class="status maybe"><span class="icon">•</span>Medium</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
-          <td><span class="status yes"><span class="icon">🔒</span>Ultra-Sandboxed</span></td>
-        </tr>
+        function createReleaseItem(release) {
+            const description = release.body ? 
+                release.body.substring(0, 150) + (release.body.length > 150 ? '...' : '') : 
+                'No description available';
 
-        <tr>
-          <td class="feature">Customization</td>
-          <td><span class="status maybe"><span class="icon">•</span>Medium</span></td>
-          <td><span class="status no"><span class="icon">✖</span>Low</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>Very High</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>High</span></td>
-        </tr>
+            return `
+                <div class="release-item" onclick="window.open('${release.html_url}', '_blank')">
+                    <div class="release-name">${release.name || release.tag_name}</div>
+                    <div class="release-date">📅 ${formatDate(release.published_at)}</div>
+                    <div class="release-desc">${description}</div>
+                </div>
+            `;
+        }
 
-        <tr>
-          <td class="feature">Package Manager</td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-          <td><span class="status no"><span class="icon">✖</span>No</span></td>
-          <td><span class="status yes"><span class="icon">✔</span>Yes</span></td>
-          <td><span class="status yes"><span class="icon">📦</span>CortexPM</span></td>
-        </tr>
+        async function loadReleases() {
+            // Load Beta Releases
+            const betaContainer = document.getElementById('betaReleases');
+            const betaReleases = await fetchGitHubReleases('A-Proof/ModernOS-Old');
+            
+            if (betaReleases && betaReleases.length > 0) {
+                betaContainer.innerHTML = betaReleases.map(release => createReleaseItem(release)).join('');
+            } else {
+                betaContainer.innerHTML = `
+                    <div class="loading">
+                        <p>⚠️ Unable to load beta releases</p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">
+                            <a href="https://github.com/A-Proof/ModernOS-Old/releases" 
+                               target="_blank" 
+                               style="color: #fb923c;">
+                                View on GitHub →
+                            </a>
+                        </p>
+                    </div>
+                `;
+            }
 
-      </tbody>
-    </table>
-  </div>
+            // Load Stable Releases
+            const stableContainer = document.getElementById('stableReleases');
+            const stableReleases = await fetchGitHubReleases('A-Proof/ModernOS-Cortex');
+            
+            if (stableReleases && stableReleases.length > 0) {
+                stableContainer.innerHTML = stableReleases.map(release => createReleaseItem(release)).join('');
+            } else {
+                stableContainer.innerHTML = `
+                    <div class="loading">
+                        <p>⚠️ Unable to load stable releases</p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">
+                            <a href="https://github.com/A-Proof/ModernOS-Cortex/releases" 
+                               target="_blank" 
+                               style="color: #10b981;">
+                                View on GitHub →
+                            </a>
+                        </p>
+                    </div>
+                `;
+            }
+        }
 
-</div>
+        // Load releases on page load
+        loadReleases();
 
-<script>
-function toggleTheme() {
-  const html = document.documentElement;
-  html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
-}
-</script>
-
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
