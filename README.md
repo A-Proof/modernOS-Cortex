@@ -11,11 +11,13 @@
 
 ### Official Versions
 [Actual Repo](https://github.com/A-Proof/ModernOS-Cortex/releases)
-* ModernOS Everest (v1.0) - Awaits formal release.
+* ModernOS Everest (Public Early Access Release, v1.0.0) - Releasing **on November 28th to 30th based on timezone.**
+* ModernOS Everest (Stable release, v1.05) - Awaits formal release.
   
 ## Features
 ModernOS Everest will include many features for everyday use, including a browser, glassy and recognizable elements and more! There will only be Everest Free for now, but paid versions with advanced capabilities will be built later. Most likely in the 1.1 Update.
 Everest also has a **special** technology called the *Q* kernel. It **will be open sourced soon, but for now, it's not.**
+In the real one, It will sometimes be referred to as "CyberOS". The first release which will be here, also known as **v1.0-cyber** will not be extremely stable for we are still developing the first generation of **QWERTY Kernels**.
 
 ## Website
 
