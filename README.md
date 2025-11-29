@@ -14,7 +14,8 @@
 * ModernOS Evermore (v1.0) - Awaits formal release.
   
 ## Features
-ModernOS Evermore will include many features for everyday use, including a browser, glassy and recognizable elements and more! The full release day is unknown, but beta releases will start streaming on the beta repo along with helper scripts.
+ModernOS Everest will include many features for everyday use, including a browser, glassy and recognizable elements and more! There will only be Everest Free for now, but paid versions with advanced capabilities will be built later. Most likely in the 1.1 Update.
+Everest also has a **special** technology called the *Q* kernel. It **will be open sourced soon, but for now, it's not.**
 
 ## Website
 
