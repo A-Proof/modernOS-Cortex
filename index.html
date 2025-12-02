@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +38,7 @@
             animation: float 30s infinite ease-in-out;
         }
 
-        .orb1 {
+        . orb1 {
             width: 700px;
             height: 700px;
             background: linear-gradient(45deg, #f72f85, #a855f7);
@@ -55,7 +55,7 @@
             animation-delay: 10s;
         }
 
-        .orb3 {
+        . orb3 {
             width: 500px;
             height: 500px;
             background: linear-gradient(45deg, #7b2ff7, #f72f85);
@@ -70,13 +70,13 @@
         }
 
         /* Header */
-        .header {
+        . header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0. 8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(247, 47, 133, 0.2);
             padding: 20px 40px;
@@ -99,7 +99,7 @@
             letter-spacing: -0.05em;
         }
 
-        .nav-links {
+        . nav-links {
             display: flex;
             gap: 30px;
             align-items: center;
@@ -167,7 +167,7 @@
             50% { filter: brightness(1.3) drop-shadow(0 0 60px rgba(247, 47, 133, 0.9)); }
         }
 
-        .tagline {
+        . tagline {
             color: #a0a0ff;
             font-size: 2em;
             margin-bottom: 40px;
@@ -176,7 +176,7 @@
             animation: fadeInUp 1s ease 0.4s backwards;
         }
 
-        .hero-description {
+        . hero-description {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.3em;
             max-width: 800px;
@@ -185,7 +185,7 @@
             animation: fadeInUp 1s ease 0.5s backwards;
         }
 
-        .hero-buttons {
+        . hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
@@ -201,6 +201,7 @@
             border-radius: 15px;
             transition: all 0.3s;
             border: 2px solid;
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -252,14 +253,14 @@
             letter-spacing: 0.1em;
         }
 
-        .section-title {
+        . section-title {
             font-size: 4em;
             font-weight: 900;
             background: linear-gradient(135deg, #f72f85, #7b2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0. 02em;
         }
 
         .section-desc {
@@ -288,7 +289,7 @@
             overflow: hidden;
         }
 
-        .feature-card::before {
+        . feature-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -300,7 +301,7 @@
             transition: opacity 0.4s;
         }
 
-        .feature-card:hover::before {
+        . feature-card:hover::before {
             opacity: 1;
         }
 
@@ -322,17 +323,119 @@
             filter: drop-shadow(0 0 20px currentColor);
         }
 
-        .feature-title {
+        . feature-title {
             font-size: 2em;
             font-weight: 800;
             margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
 
-        .feature-text {
+        . feature-text {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.1em;
             line-height: 1.7;
+        }
+
+        /* Documentation Section */
+        .docs-container {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(247, 47, 133, 0.3);
+            border-radius: 30px;
+            padding: 60px;
+            backdrop-filter: blur(20px);
+            overflow-x: auto;
+            box-shadow: 0 20px 60px rgba(247, 47, 133, 0.2);
+        }
+
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .docs-table thead {
+            background: rgba(247, 47, 133, 0.15);
+            border-bottom: 2px solid rgba(247, 47, 133, 0. 3);
+        }
+
+        . docs-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 800;
+            font-size: 1.1em;
+            color: #f72f85;
+            letter-spacing: 0.05em;
+        }
+
+        . docs-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .docs-table tbody tr:hover {
+            background: rgba(247, 47, 133, 0.1);
+            border-left: 4px solid #f72f85;
+        }
+
+        .docs-table td {
+            padding: 18px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+        }
+
+        .docs-table .col-feature {
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .docs-table .col-status {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0. 85em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        . status-active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .status-beta {
+            background: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0. 4);
+        }
+
+        . status-planned {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+        }
+
+        .docs-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        . docs-empty-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        . docs-empty-text {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        . docs-empty-subtext {
+            font-size: 1em;
+            opacity: 0.7;
         }
 
         /* Releases Section */
@@ -350,11 +453,11 @@
             backdrop-filter: blur(20px);
         }
 
-        .release-column.beta {
+        .release-column. beta {
             border-color: rgba(251, 146, 60, 0.3);
         }
 
-        .release-column.stable {
+        .release-column. stable {
             border-color: rgba(16, 185, 129, 0.3);
         }
 
@@ -403,7 +506,7 @@
             padding-right: 10px;
         }
 
-        .releases-list::-webkit-scrollbar {
+        . releases-list::-webkit-scrollbar {
             width: 8px;
         }
 
@@ -433,7 +536,7 @@
             transform: translateX(10px);
         }
 
-        .release-column.beta .release-item {
+        . release-column.beta .release-item {
             --hover-color: #fb923c;
         }
 
@@ -467,7 +570,7 @@
             font-size: 1.1em;
         }
 
-        .loading-spinner {
+        . loading-spinner {
             display: inline-block;
             width: 40px;
             height: 40px;
@@ -491,7 +594,7 @@
 
         .reason-card {
             background: rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0. 1);
             border-radius: 20px;
             padding: 40px;
             backdrop-filter: blur(20px);
@@ -513,7 +616,7 @@
             margin-bottom: 15px;
         }
 
-        .reason-title {
+        . reason-title {
             font-size: 1.5em;
             font-weight: 700;
             margin-bottom: 15px;
@@ -525,7 +628,7 @@
         }
 
         /* Footer */
-        .footer {
+        . footer {
             text-align: center;
             padding: 60px 40px;
             border-top: 1px solid rgba(247, 47, 133, 0.2);
@@ -535,7 +638,7 @@
 
         @media (max-width: 1200px) {
             h1 { font-size: 6em; }
-            .section-title { font-size: 3em; }
+            . section-title { font-size: 3em; }
             .releases-container {
                 grid-template-columns: 1fr;
             }
@@ -552,6 +655,14 @@
             .releases-container {
                 grid-template-columns: 1fr;
             }
+            .docs-container {
+                padding: 40px 20px;
+            }
+            .docs-table th,
+            .docs-table td {
+                padding: 15px 10px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -566,11 +677,10 @@
         <nav class="nav">
             <div class="logo">💻 MODERNOS</div>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">← Nova Project</a>
                 <a href="#future" class="nav-link">The Future</a>
+                <a href="#docs" class="nav-link">Documentation</a>
                 <a href="#why" class="nav-link">Why ModernOS</a>
                 <a href="#releases" class="nav-link">Releases</a>
-                <a href="osdemo.html" class="nav-link">Live Demo</a>
             </div>
         </nav>
     </header>
@@ -582,10 +692,10 @@
             <h1>ModernOS</h1>
             <p class="tagline">Your Operating System</p>
             <p class="hero-description">
-                Experience a revolutionary operating system that runs entirely well. No malware, no advertisment, just pure innovation at your fingertips. Ultra customizabillity.
+                Experience a revolutionary operating system that runs entirely well.  No malware, no advertisment, just pure innovation at your fingertips.  Ultra customizabillity. 
             </p>
             <div class="hero-buttons">
-                <a href="osdemo.html" class="hero-btn btn-primary">Try Live Demo</a>
+                <a href="#docs" class="hero-btn btn-primary">View Documentation</a>
                 <a href="#releases" class="hero-btn btn-secondary">Browse Releases</a>
             </div>
         </div>
@@ -596,7 +706,7 @@
                 <div class="section-badge">The Future</div>
                 <h2 class="section-title">Shaping Tomorrow</h2>
                 <p class="section-desc">
-                    ModernOS is redefining what's possible in Operating systems.
+                    ModernOS is redefining what's possible in Operating systems. 
                 </p>
             </div>
 
@@ -605,7 +715,7 @@
                     <div class="feature-icon">🌐</div>
                     <h3 class="feature-title">Universal Access</h3>
                     <p class="feature-text">
-                        Access your complete desktop environment from any device with easy boot access. Your OS goes wherever you go, no syncing required.
+                        Access your complete desktop environment from any device with easy boot access.  Your OS goes wherever you go, no syncing required.
                     </p>
                 </div>
 
@@ -613,7 +723,7 @@
                     <div class="feature-icon">⚡</div>
                     <h3 class="feature-title">Lightning Performance</h3>
                     <p class="feature-text">
-                        Built with cutting-edge web technologies, ModernOS delivers desktop-class performance right on your computer.
+                        Built with cutting-edge web technologies, ModernOS delivers desktop-class performance right on your computer. 
                     </p>
                 </div>
 
@@ -627,13 +737,48 @@
             </div>
         </div>
 
+        <!-- Documentation Section -->
+        <div class="section" id="docs">
+            <div class="section-header">
+                <div class="section-badge">Reference</div>
+                <h2 class="section-title">Documentation</h2>
+                <p class="section-desc">
+                    Complete feature documentation and implementation status
+                </p>
+            </div>
+
+            <div class="docs-container">
+                <table class="docs-table" id="docsTable">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docsTableBody">
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 40px;">
+                                <div class="docs-empty">
+                                    <div class="docs-empty-icon">📚</div>
+                                    <div class="docs-empty-text">Documentation Coming Soon</div>
+                                    <div class="docs-empty-subtext">Add your features and specifications here</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- Why ModernOS Section -->
         <div class="section" id="why">
             <div class="section-header">
                 <div class="section-badge">Why Choose Us</div>
-                <h2 class="section-title">Why ModernOS?</h2>
+                <h2 class="section-title">Why ModernOS? </h2>
                 <p class="section-desc">
-                    It's not just an OS, it's a revolution in computing.
+                    It's not just an OS, it's a revolution in computing. 
                 </p>
             </div>
 
@@ -642,7 +787,7 @@
                     <div class="reason-number">01</div>
                     <h3 class="reason-title">Zero Ads</h3>
                     <p class="reason-text">
-                        No ads. We prioritize the user exprience, not the corporate sponsors.
+                        No ads.  We prioritize the user exprience, not the corporate sponsors. 
                     </p>
                 </div>
 
@@ -650,7 +795,7 @@
                     <div class="reason-number">02</div>
                     <h3 class="reason-title">Cross-Platform Freedom</h3>
                     <p class="reason-text">
-                        Works on Windows, Mac, Linux, tablets, phones - anywhere with a modern BIOS. True platform independence.
+                        Works on Windows, Mac, Linux, tablets, phones - anywhere with a modern BIOS.  True platform independence.
                     </p>
                 </div>
 
@@ -658,16 +803,15 @@
                     <div class="reason-number">03</div>
                     <h3 class="reason-title">Always Updated</h3>
                     <p class="reason-text">
-                        Refresh your computer with a stylish look, right from ModernOS.
+                        Refresh your computer with a stylish look, right from ModernOS. 
                     </p>
                 </div>
-
 
                 <div class="reason-card">
                     <div class="reason-number">04</div>
                     <h3 class="reason-title">Insanely Cool</h3>
                     <p class="reason-text">
-                        From the custom cursor to draggable windows to the boot sequence - every detail is crafted to amaze. Computing reimagined.
+                        From the custom cursor to draggable windows to the boot sequence - every detail is crafted to amaze.  Computing reimagined.
                     </p>
                 </div>
             </div>
@@ -696,7 +840,7 @@
                     <div class="releases-list" id="betaReleases">
                         <div class="loading">
                             <div class="loading-spinner"></div>
-                            <div>Loading beta releases from GitHub...</div>
+                            <div>Loading beta releases from GitHub... </div>
                         </div>
                     </div>
                 </div>
@@ -722,13 +866,52 @@
     </div>
 
     <footer class="footer">
-        <p>© 2025 ModernOS. Part of The Nova Project. Built with ❤️ and innovation.</p>
-        <p style="margin-top: 15px;">
-            <a href="index.html" style="color: #f72f85; text-decoration: none;">← Back to Nova Project</a>
-        </p>
+        <p>© 2025 ModernOS. Built with ❤️ and innovation.</p>
     </footer>
 
     <script>
+        // Documentation data structure
+        const documentationData = [];
+
+        function addDocumentation(feature, description, status, version) {
+            documentationData.push({ feature, description, status, version });
+            updateDocumentationTable();
+        }
+
+        function updateDocumentationTable() {
+            const tbody = document.getElementById('docsTableBody');
+            
+            if (documentationData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 40px;">
+                            <div class="docs-empty">
+                                <div class="docs-empty-icon">📚</div>
+                                <div class="docs-empty-text">Documentation Coming Soon</div>
+                                <div class="docs-empty-subtext">Add your features and specifications here</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = documentationData.map(doc => {
+                let statusClass = 'status-planned';
+                if (doc.status. toLowerCase() === 'active') statusClass = 'status-active';
+                else if (doc.status.toLowerCase() === 'beta') statusClass = 'status-beta';
+
+                return `
+                    <tr>
+                        <td><span class="col-feature">${doc.feature}</span></td>
+                        <td>${doc.description}</td>
+                        <td><span class="col-status ${statusClass}">${doc.status}</span></td>
+                        <td>${doc.version}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
         // Fetch GitHub releases
         async function fetchGitHubReleases(repo) {
             try {
@@ -751,14 +934,14 @@
         }
 
         function createReleaseItem(release) {
-            const description = release.body ? 
+            const description = release.body ?  
                 release.body.substring(0, 150) + (release.body.length > 150 ? '...' : '') : 
                 'No description available';
 
             return `
                 <div class="release-item" onclick="window.open('${release.html_url}', '_blank')">
                     <div class="release-name">${release.name || release.tag_name}</div>
-                    <div class="release-date">📅 ${formatDate(release.published_at)}</div>
+                    <div class="release-date">📅 ${formatDate(release. published_at)}</div>
                     <div class="release-desc">${description}</div>
                 </div>
             `;
@@ -772,7 +955,7 @@
             if (betaReleases && betaReleases.length > 0) {
                 betaContainer.innerHTML = betaReleases.map(release => createReleaseItem(release)).join('');
             } else {
-                betaContainer.innerHTML = `
+                betaContainer. innerHTML = `
                     <div class="loading">
                         <p>⚠️ Unable to load beta releases</p>
                         <p style="font-size: 0.9em; margin-top: 10px;">
@@ -787,11 +970,11 @@
             }
 
             // Load Stable Releases
-            const stableContainer = document.getElementById('stableReleases');
+            const stableContainer = document. getElementById('stableReleases');
             const stableReleases = await fetchGitHubReleases('A-Proof/ModernOS-Cortex');
             
             if (stableReleases && stableReleases.length > 0) {
-                stableContainer.innerHTML = stableReleases.map(release => createReleaseItem(release)).join('');
+                stableContainer. innerHTML = stableReleases. map(release => createReleaseItem(release)).join('');
             } else {
                 stableContainer.innerHTML = `
                     <div class="loading">
@@ -813,7 +996,7 @@
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor. addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
