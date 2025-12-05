@@ -11,7 +11,7 @@
 
 ### Official Versions
 [Actual Repo](https://github.com/A-Proof/ModernOS-Cortex/releases)
-* ModernOS Everest (Public Early Access Release, v1.0.0) - Released on December 4th 2025 at 9:30 PM est. **Have fun!**
+* ModernOS Everest (Public Early Access Release, v1.0.0) - ModernOS Everest is right now still being worked on, but it is **80%** done. The disk image provided on December 4th of 2025 was a mere preview.
 * ModernOS Everest (Stable release, v1.05) - Awaits formal release. **According to the release schedule, Mid December 2025**... We'll see.
 
   ### Kernel Versions && Architectures
